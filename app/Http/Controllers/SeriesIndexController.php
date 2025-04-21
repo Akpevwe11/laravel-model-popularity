@@ -13,7 +13,7 @@ class SeriesIndexController extends Controller
         dd(Series::withTotalVisitsCount()->get());
         return view('series.index', [
 
-            'popular' => Series::withTotalVisitsCount()->get()
+            'popular' => Series::popularLastDays(2)->get()
         ]);
     }
 }

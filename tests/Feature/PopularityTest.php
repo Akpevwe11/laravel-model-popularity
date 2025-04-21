@@ -46,3 +46,21 @@ it('gets popular records between two dates', function () {
     expect($series->first()->visit_count)->toEqual(1);
 
 });
+
+it('gets popular records by the last x days', function() {
+    $series = Series::factory()->times(2)->create();
+
+    Carbon::setTestNow(now()->addDays(4));
+
+    $series[0]->visit();
+
+    Carbon::setTestNow();
+
+    $series[1]->visit();
+
+    $series = Series::popularLastDays(2)->get();
+
+    expect($series->count())->toEqual(1);
+    expect($series->first()->visit_count)->toEqual(1);
+
+});
