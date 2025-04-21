@@ -12,9 +12,9 @@ trait FiltersByPopularityTimeframe
         $query->withTotalVisitCount()->orderBy('visit_count_total', 'desc');
     }
 
-    public function scopePoularLastDays(Builder $query, int $days)
+    public function scopePopularLastDays(Builder $query, int $days)
     {
-        $query->scopePopularBetween(now()->subDays($days), now());
+        $query->popularBetween(now()->subDays($days), now());
 
     }
 
