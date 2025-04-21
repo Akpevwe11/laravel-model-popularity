@@ -7,8 +7,10 @@ use App\Visitable\PendingVisit;
 use Illuminate\Database\Eloquent\Builder;
 
 
+
 trait Visitable
 {
+    use Concerns\FiltersByPopularityTimeframe;
 
     public function visit()
     {
